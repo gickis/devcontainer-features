@@ -69,6 +69,9 @@ export DEBIAN_FRONTEND=noninteractive
 
 # Install dependencies
 check_packages curl ca-certificates coreutils
+if ! type git > /dev/null 2>&1; then
+    check_packages git
+fi
 
 architecture="$(uname -m)"
 case $architecture in
