@@ -15,7 +15,7 @@ Latest version installed by default. You can pin a specific version or specify l
 ```
 "features": {
     "ghcr.io/gickis/devcontainer-features/kubeseal:1": {
-        "kubeseal": "latest",
+        "kubeseal": "latest"
     }
 }
 ```
