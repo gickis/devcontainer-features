@@ -1,7 +1,7 @@
 
-# Kubeseal tool
+# Kubeseal tool (kubeseal)
 
-Installs latest version of kubeseal and installs needed dependencies.
+
 
 ## Example Usage
 
