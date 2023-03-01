@@ -6,7 +6,7 @@ set -e
 source dev-container-features-test-lib
 
 # Definition specific tests
-check "kubeseal" kubectl
+check "kubeseal" kubeseal
 
 # Report result
 reportResults
