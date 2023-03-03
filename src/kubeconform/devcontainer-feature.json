@@ -1,0 +1,20 @@
+{
+    "name": "kubeconform",
+    "id": "kubeconform",
+    "version": "1.0.0",
+    "description": "",
+    "options": {
+        "kubeconform": {
+            "type": "string",
+            "proposals": [
+                "latest",
+                "none"
+            ],
+            "default": "latest",
+            "description": "Select or enter a kubeconform version to install"
+        }
+    },
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils"
+    ]
+}
