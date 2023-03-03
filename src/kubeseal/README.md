@@ -1,5 +1,5 @@
 
-# Kubeseal tool (kubeseal)
+# kubeseal (kubeseal)
 
 
 
