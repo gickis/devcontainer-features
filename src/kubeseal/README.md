@@ -15,7 +15,7 @@
 
 | Options Id | Description | Type | Default Value |
 |-----|-----|-----|-----|
-| kubeseal | Select or enter a kubeseal version to install | string | latest |
+| version | Select or enter a kubeseal version to install | string | latest |
 
 
 
