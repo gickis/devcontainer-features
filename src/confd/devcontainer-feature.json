@@ -1,7 +1,7 @@
 {
-    "name": "kubeseal",
-    "id": "kubeseal",
-    "version": "1.0.1",
+    "name": "confd",
+    "id": "confd",
+    "version": "1.0.0",
     "description": "",
     "options": {
         "version": {
@@ -11,7 +11,7 @@
                 "none"
             ],
             "default": "latest",
-            "description": "Select or enter a kubeseal version to install"
+            "description": "Select or enter a kubeconform version to install"
         }
     },
     "installsAfter": [

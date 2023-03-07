@@ -4,9 +4,9 @@ set -e
 # Clean up
 rm -rf /var/lib/apt/lists/*
 
-KUBECONFORM_VERSION="${KUBECONFORM:-"latest"}"
+KUBECONFORM_VERSION="${VERSION:-"latest"}"
 
-KUBECONFORM_SHA256="${KUBECONFORM_SHA256:-"automatic"}"
+KUBECONFORM_SHA256="${SHA256:-"automatic"}"
 
 
 if [ "$(id -u)" -ne 0 ]; then
