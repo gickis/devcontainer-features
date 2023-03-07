@@ -6,6 +6,7 @@ Installs the following command line utilities:
 
 * [kubeseal](https://github.com/bitnami-labs/sealed-secrets#readme)
 * [kubeconform](https://github.com/yannh/kubeconform)
+* [confd](https://github.com/abtreece/confd)
 
 Auto-detects latest version and installs needed dependencies.
 
@@ -17,7 +18,7 @@ Latest version installed by default. You can pin a specific version or specify l
 ```
 "features": {
     "ghcr.io/gickis/devcontainer-features/kubeseal:1": {
-        "kubeseal": "latest"
+        "version": "latest"
     }
 }
 ```
@@ -25,7 +26,15 @@ Latest version installed by default. You can pin a specific version or specify l
 ```
 "features": {
     "ghcr.io/gickis/devcontainer-features/kubeconform:1": {
-        "kubeconform": "latest"
-    },
+        "version": "latest"
+    }
+}
+```
+* confd
+```
+"features": {
+    "ghcr.io/gickis/devcontainer-features/confd:1": {
+        "version": "latest"
+    }
 }
 ```
