@@ -1,6 +1,6 @@
 {
-    "name": "confd",
-    "id": "confd",
+    "name": "gomplate",
+    "id": "gomplate",
     "version": "1.0.0",
     "description": "",
     "options": {
@@ -11,7 +11,7 @@
                 "none"
             ],
             "default": "latest",
-            "description": "Select or enter a confd version to install"
+            "description": "Select or enter a gomplate version to install"
         }
     },
     "installsAfter": [

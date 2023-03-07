@@ -16,6 +16,7 @@ jobs:
           - kubeseal
           - kubeconform
           - confd
+          - gomplate
         baseImage:
           - debian:latest
           - ubuntu:latest
@@ -38,6 +39,7 @@ jobs:
           - kubeseal
           - kubeconform
           - confd
+          - gomplate
     steps:
       - uses: actions/checkout@v3
 
