@@ -94,7 +94,7 @@ if [ "${GOMPLATE_VERSION}" != "none" ] && ! type gomplate > /dev/null 2>&1; then
     curl -sSL -o /tmp/gomplate_linux-${architecture} "https://github.com/hairyhenderson/gomplate/releases/download/v${GOMPLATE_VERSION}/gomplate_linux-${architecture}"
 
     if [ "$GOMPLATE_SHA256" = "automatic" ]; then
-        GOMPLATE_SHA256="$(curl -sSL "https://github.com/hairyhenderson/gomplate/releases/download/v${GOMPLATE_VERSION}/checksums-v${GOMPLATE_VERSION}_sha256.txt" | grep bin/gomplate_linux-${architecture} | cut -f1 -d' ')"
+        GOMPLATE_SHA256="$(curl -sSL "https://github.com/hairyhenderson/gomplate/releases/download/v${GOMPLATE_VERSION}/checksums-v${GOMPLATE_VERSION}_sha256.txt" | grep -w "bin/gomplate_linux-${architecture}$" | cut -f1 -d' ')"
         echo $GOMPLATE_SHA256
     fi
     ([ "${GOMPLATE_SHA256}" = "dev-mode" ] || (echo "${GOMPLATE_SHA256} */tmp/gomplate_linux-${architecture}" | sha256sum -c -))
