@@ -27,7 +27,7 @@ Latest version installed by default. You can pin a specific version or specify l
 "features": {
     "ghcr.io/gickis/devcontainer-features/kubeconform:1": {
         "version": "latest"
-    },
+    }
 }
 ```
 * confd
@@ -35,6 +35,6 @@ Latest version installed by default. You can pin a specific version or specify l
 "features": {
     "ghcr.io/gickis/devcontainer-features/confd:1": {
         "version": "latest"
-    },
+    }
 }
 ```
