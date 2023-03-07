@@ -15,7 +15,7 @@
 
 | Options Id | Description | Type | Default Value |
 |-----|-----|-----|-----|
-| kubeconform | Select or enter a kubeconform version to install | string | latest |
+| version | Select or enter a kubeconform version to install | string | latest |
 
 
 
