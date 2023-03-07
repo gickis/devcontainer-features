@@ -4,9 +4,9 @@ set -e
 # Clean up
 rm -rf /var/lib/apt/lists/*
 
-KUBESEAL_VERSION="${VERSION:-"latest"}"
+CONFD_VERSION="${VERSION:-"latest"}"
 
-KUBESEAL_SHA256="${SHA256:-"automatic"}"
+CONFD_SHA256="${SHA256:-"automatic"}"
 
 
 if [ "$(id -u)" -ne 0 ]; then
@@ -77,39 +77,38 @@ architecture="$(uname -m)"
 case $architecture in
     x86_64) architecture="amd64";;
     aarch64 | armv8*) architecture="arm64";;
-    aarch32 | armv7* | armvhf*) architecture="arm";;
-    i?86) architecture="386";;
+    aarch32 | armv7* | armv6* | armvhf*) architecture="armv7";;
     *) echo "(!) Architecture $architecture unsupported"; exit 1 ;;
 esac
 
-# Install kubeseal, verify checksum
-if [ "${KUBESEAL_VERSION}" != "none" ] && ! type kubeseal > /dev/null 2>&1; then
+# Install confd, verify checksum
+if [ "${CONFD_VERSION}" != "none" ] && ! type confd > /dev/null 2>&1; then
 
-    echo "Downloading kubeseal..."
+    echo "Downloading confd..."
 
-    find_version_from_git_tags KUBESEAL_VERSION https://github.com/bitnami-labs/sealed-secrets
+    find_version_from_git_tags CONFD_VERSION https://github.com/abtreece/confd
 
-    KUBESEAL_VERSION="${KUBESEAL_VERSION}"
+    CONFD_VERSION="${CONFD_VERSION}"
 
-    curl -sSL -o /tmp/kubeseal-${KUBESEAL_VERSION}-linux-${architecture}.tar.gz "https://github.com/bitnami-labs/sealed-secrets/releases/download/v${KUBESEAL_VERSION}/kubeseal-${KUBESEAL_VERSION}-linux-${architecture}.tar.gz"
+    curl -sSL -o /tmp/confd-v${CONFD_VERSION}-linux-${architecture}.tar.gz "https://github.com/abtreece/confd/releases/download/v${CONFD_VERSION}/confd-v${CONFD_VERSION}-linux-${architecture}.tar.gz"
 
-    if [ "$KUBESEAL_SHA256" = "automatic" ]; then
-        KUBESEAL_SHA256="$(curl -sSL "https://github.com/bitnami-labs/sealed-secrets/releases/download/v${KUBESEAL_VERSION}/sealed-secrets_${KUBESEAL_VERSION}_checksums.txt" | grep kubeseal-${KUBESEAL_VERSION}-linux-${architecture}.tar.gz | cut -f1 -d' ')"
-        echo $KUBESEAL_SHA256
+    if [ "$CONFD_SHA256" = "automatic" ]; then
+        CONFD_SHA256="$(curl -sSL "https://github.com/abtreece/confd/releases/download/v${CONFD_VERSION}/checksums.txt" | grep confd-v${CONFD_VERSION}-linux-${architecture}.tar.gz | cut -f1 -d' ')"
+        echo $CONFD_SHA256
     fi
-    ([ "${KUBESEAL_SHA256}" = "dev-mode" ] || (echo "${KUBESEAL_SHA256} */tmp/kubeseal-${KUBESEAL_VERSION}-linux-${architecture}.tar.gz" | sha256sum -c -))
-    tar -xf /tmp/kubeseal-${KUBESEAL_VERSION}-linux-${architecture}.tar.gz --directory /usr/local/bin/
-    chmod 0755 /usr/local/bin/kubeseal
-    rm /tmp/kubeseal-${KUBESEAL_VERSION}-linux-${architecture}.tar.gz
-    if ! type kubeseal > /dev/null 2>&1; then
-        echo '(!) kubeseal installation failed!'
+    ([ "${CONFD_SHA256}" = "dev-mode" ] || (echo "${CONFD_SHA256} */tmp/confd-v${CONFD_VERSION}-linux-${architecture}.tar.gz" | sha256sum -c -))
+    tar -xf /tmp/confd-v${CONFD_VERSION}-linux-${architecture}.tar.gz --directory /usr/local/bin/
+    chmod 0755 /usr/local/bin/confd
+    rm /tmp/confd-v${CONFD_VERSION}-linux-${architecture}.tar.gz
+    if ! type confd -h > /dev/null 2>&1; then
+        echo '(!) confd installation failed!'
         exit 1
     fi
 else
-    if ! type kubeseal > /dev/null 2>&1; then
-        echo "Skipping kubeseal."
+    if ! type confd -h > /dev/null 2>&1; then
+        echo "Skipping confd."
     else
-        echo "kubeseal already instaled"
+        echo "confd already instaled"
     fi
 fi
 
