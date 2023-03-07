@@ -100,12 +100,12 @@ if [ "${CONFD_VERSION}" != "none" ] && ! type confd > /dev/null 2>&1; then
     tar -xf /tmp/confd-v${CONFD_VERSION}-linux-${architecture}.tar.gz --directory /usr/local/bin/
     chmod 0755 /usr/local/bin/confd
     rm /tmp/confd-v${CONFD_VERSION}-linux-${architecture}.tar.gz
-    if ! type confd -h > /dev/null 2>&1; then
+    if ! type confd > /dev/null 2>&1; then
         echo '(!) confd installation failed!'
         exit 1
     fi
 else
-    if ! type confd -h > /dev/null 2>&1; then
+    if ! type confd > /dev/null 2>&1; then
         echo "Skipping confd."
     else
         echo "confd already instaled"
