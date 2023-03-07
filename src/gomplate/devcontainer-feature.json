@@ -11,7 +11,7 @@
                 "none"
             ],
             "default": "latest",
-            "description": "Select or enter a kubeconform version to install"
+            "description": "Select or enter a gomplate version to install"
         }
     },
     "installsAfter": [
